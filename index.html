@@ -4,9 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Loi Leen</title>
-
   <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;600;700&display=swap" rel="stylesheet">
-
   <style>
     :root {
       --cream: #F5F1E8;
@@ -17,24 +15,20 @@
       --text-soft: #687061;
       --border: #DED9CC;
     }
-
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
     }
-
     html {
       scroll-behavior: smooth;
     }
-
     body {
       font-family: "Tajawal", sans-serif;
       background: var(--cream-light);
       color: var(--green-dark);
       line-height: 1.6;
     }
-
     header {
       position: sticky;
       top: 0;
@@ -47,35 +41,29 @@
       justify-content: space-between;
       padding: 14px 7%;
     }
-
     .logo {
       display: flex;
       align-items: center;
       text-decoration: none;
     }
-
     .logo img {
       width: 95px;
       height: auto;
       display: block;
     }
-
     nav {
       display: flex;
       gap: 25px;
     }
-
     nav a {
       color: var(--green-dark);
       text-decoration: none;
       font-size: 15px;
       font-weight: 500;
     }
-
     nav a:hover {
       opacity: 0.65;
     }
-
     .hero {
       min-height: 75vh;
       display: flex;
@@ -86,21 +74,18 @@
       padding: 60px 20px;
       background: var(--cream);
     }
-
     .hero h1 {
       font-size: clamp(42px, 8vw, 76px);
       font-weight: 600;
       margin-bottom: 15px;
       letter-spacing: -1px;
     }
-
     .hero p {
       color: var(--text-soft);
       font-size: 18px;
       max-width: 500px;
       margin-bottom: 30px;
     }
-
     .hero-button {
       display: inline-block;
       background: var(--green-dark);
@@ -110,29 +95,24 @@
       border-radius: 30px;
       transition: 0.3s;
     }
-
     .hero-button:hover {
       transform: translateY(-2px);
       opacity: 0.9;
     }
-
     section {
       padding: 80px 7%;
     }
-
     .section-title {
       text-align: center;
       font-size: 32px;
       margin-bottom: 45px;
       font-weight: 600;
     }
-
     .products {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       gap: 25px;
     }
-
     .product-card {
       background: white;
       border: 1px solid var(--border);
@@ -141,43 +121,35 @@
       cursor: pointer;
       transition: 0.3s;
     }
-
     .product-card:hover {
       transform: translateY(-5px);
       box-shadow: 0 12px 30px rgba(40, 51, 38, 0.08);
     }
-
     .product-card img {
       width: 100%;
       aspect-ratio: 1 / 1;
       object-fit: cover;
       display: block;
     }
-
     .product-info {
       padding: 18px;
     }
-
     .product-info h3 {
       font-size: 18px;
       margin-bottom: 6px;
     }
-
     .product-info p {
       color: var(--text-soft);
       font-size: 15px;
     }
-
     .cart-section {
       background: var(--green-soft);
       min-height: 300px;
     }
-
     #cart-items {
       max-width: 700px;
       margin: 0 auto 20px;
     }
-
     .cart-item {
       background: white;
       border: 1px solid var(--border);
@@ -187,13 +159,62 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
+      gap: 15px;
+      flex-wrap: wrap;
     }
-
+    .cart-item-name {
+      font-weight: 500;
+      flex: 1;
+    }
+    .cart-item-price {
+      color: var(--text-soft);
+      min-width: 80px;
+      text-align: center;
+    }
+    .cart-controls {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+    }
+    .cart-controls button {
+      border: 1px solid var(--border);
+      background: var(--cream-light);
+      color: var(--green-dark);
+      min-width: 32px;
+      height: 32px;
+      padding: 0 8px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-family: inherit;
+      font-size: 15px;
+      transition: 0.2s;
+    }
+    .cart-controls button:hover {
+      background: var(--green-light);
+    }
+    .cart-controls .quantity-button {
+      font-size: 20px;
+      line-height: 1;
+    }
+    .quantity {
+      min-width: 25px;
+      text-align: center;
+      font-weight: 600;
+    }
+    .delete-button {
+      background: transparent !important;
+      border-color: transparent !important;
+      color: var(--text-soft) !important;
+      margin-left: 5px;
+    }
+    .delete-button:hover {
+      color: var(--green-dark) !important;
+      background: var(--green-soft) !important;
+    }
     .empty-cart {
       text-align: center;
       color: var(--text-soft);
     }
-
     .cart-total {
       max-width: 700px;
       margin: auto;
@@ -201,7 +222,6 @@
       font-size: 20px;
       font-weight: 600;
     }
-
     footer {
       text-align: center;
       padding: 30px;
@@ -209,7 +229,6 @@
       color: white;
       font-size: 14px;
     }
-
     #overlay {
       position: fixed;
       inset: 0;
@@ -217,7 +236,6 @@
       z-index: 200;
       display: none;
     }
-
     #product-panel {
       position: fixed;
       top: 0;
@@ -231,11 +249,9 @@
       transition: right 0.35s ease;
       overflow-y: auto;
     }
-
     #product-panel.active {
       right: 0;
     }
-
     .close-panel {
       border: none;
       background: none;
@@ -244,30 +260,25 @@
       color: var(--green-dark);
       float: right;
     }
-
     #panel-image {
       width: 100%;
       border-radius: 16px;
       margin-top: 35px;
       margin-bottom: 20px;
     }
-
     #panel-name {
       font-size: 28px;
       margin-bottom: 8px;
     }
-
     #panel-price {
       font-size: 18px;
       font-weight: 600;
       margin-bottom: 15px;
     }
-
     #panel-description {
       color: var(--text-soft);
       margin-bottom: 25px;
     }
-
     #add-cart-button {
       width: 100%;
       border: none;
@@ -279,83 +290,76 @@
       font-family: inherit;
       font-size: 16px;
     }
-
     #add-cart-button:hover {
       opacity: 0.9;
     }
-
     @media (max-width: 900px) {
       .products {
         grid-template-columns: repeat(2, 1fr);
       }
     }
-
     @media (max-width: 600px) {
       header {
         padding: 12px 5%;
       }
-
       .logo img {
         width: 75px;
       }
-
       nav {
         gap: 14px;
       }
-
       nav a {
         font-size: 13px;
       }
-
       section {
         padding: 60px 5%;
       }
-
       .products {
         grid-template-columns: 1fr;
       }
-
       #product-panel {
         width: 100%;
         right: -100%;
       }
-
       #product-panel.active {
         right: 0;
+      }
+      .cart-item {
+        align-items: flex-start;
+      }
+      .cart-item-name {
+        width: 100%;
+        flex: none;
+      }
+      .cart-controls {
+        width: 100%;
+      }
+      .cart-item-price {
+        margin-left: auto;
       }
     }
   </style>
 </head>
-
 <body>
-
   <header>
     <a href="#" class="logo">
       <img src="images/logo.png" alt="Loi Leen">
     </a>
-
     <nav>
       <a href="#home">Home</a>
       <a href="#products">Products</a>
       <a href="#cart">Cart</a>
     </nav>
   </header>
-
-
   <main>
-
     <section class="hero" id="home">
       <h1>Organic goodness.</h1>
       <p>Tea, matcha, honey and coffee.</p>
       <a href="#products" class="hero-button">Shop Now</a>
     </section>
-
-
     <section id="products">
       <h2 class="section-title">Our Products</h2>
-
       <div class="products">
-
         <div class="product-card"
           onclick="openProduct(
             'Matcha',
@@ -363,16 +367,12 @@
             'images/matcha.jpg',
             'Pure matcha with a smooth and refreshing taste.'
           )">
-
           <img src="images/matcha.jpg" alt="Matcha">
-
           <div class="product-info">
             <h3>Matcha</h3>
             <p>45 SAR</p>
           </div>
         </div>
-
-
         <div class="product-card"
           onclick="openProduct(
             'Natural Honey',
@@ -380,16 +380,12 @@
             'images/honey.jpg',
             'Natural honey with a rich and delicate sweetness.'
           )">
-
           <img src="images/honey.jpg" alt="Natural Honey">
-
           <div class="product-info">
             <h3>Natural Honey</h3>
             <p>35 SAR</p>
           </div>
         </div>
-
-
         <div class="product-card"
           onclick="openProduct(
             'Green Tea',
@@ -397,16 +393,12 @@
             'images/green-tea.jpg',
             'A refreshing green tea for a simple daily ritual.'
           )">
-
           <img src="images/green-tea.jpg" alt="Green Tea">
-
           <div class="product-info">
             <h3>Green Tea</h3>
             <p>25 SAR</p>
           </div>
         </div>
-
-
         <div class="product-card"
           onclick="openProduct(
             'Organic Coffee',
@@ -414,193 +406,154 @@
             'images/coffee.jpg',
             'Organic coffee with a rich and balanced flavor.'
           )">
-
           <img src="images/coffee.jpg" alt="Organic Coffee">
-
           <div class="product-info">
             <h3>Organic Coffee</h3>
             <p>40 SAR</p>
           </div>
         </div>
-
       </div>
     </section>
-
-
     <section class="cart-section" id="cart">
       <h2 class="section-title">Your Cart</h2>
-
       <div id="cart-items">
         <p class="empty-cart">Your cart is empty.</p>
       </div>
-
       <div class="cart-total">
         Total: <span id="cart-total">0 SAR</span>
       </div>
     </section>
-
   </main>
-
-
   <footer>
     © 2026 Loi Leen
   </footer>
-
-
   <div id="overlay" onclick="closeProduct()"></div>
-
-
   <div id="product-panel">
-
     <button class="close-panel" onclick="closeProduct()">×</button>
-
     <img id="panel-image" src="" alt="Product">
-
     <h2 id="panel-name"></h2>
-
     <p id="panel-price"></p>
-
     <p id="panel-description"></p>
-
     <button id="add-cart-button">Add to Cart</button>
-
   </div>
-
-
   <script>
-
     let cart = [];
-
     const panel = document.getElementById("product-panel");
-
-
     function addToCart(name, price) {
-
-      cart.push({
-        name: name,
-        price: price
+      const existingItem = cart.find(function(item) {
+        return item.name === name;
       });
-
+      if (existingItem) {
+        existingItem.quantity++;
+      } else {
+        cart.push({
+          name: name,
+          price: price,
+          quantity: 1
+        });
+      }
       updateCart();
-
       closeProduct();
     }
-
-
     function updateCart() {
-
       const cartItems = document.getElementById("cart-items");
       const cartTotal = document.getElementById("cart-total");
-
       if (cart.length === 0) {
-
         cartItems.innerHTML =
           '<p class="empty-cart">Your cart is empty.</p>';
-
         cartTotal.textContent = "0 SAR";
-
         return;
       }
-
-
       let total = 0;
-
       cartItems.innerHTML = "";
-
-
-      cart.forEach(function(item) {
-
-        total += item.price;
-
+      cart.forEach(function(item, index) {
+        total += item.price * item.quantity;
         const itemElement = document.createElement("div");
-
         itemElement.className = "cart-item";
-
         itemElement.innerHTML = `
-          <span>${item.name}</span>
-          <span>${item.price} SAR</span>
+          <span class="cart-item-name">
+            ${item.name}
+          </span>
+          <span class="cart-item-price">
+            ${item.price * item.quantity} SAR
+          </span>
+          <div class="cart-controls">
+            <button
+              class="quantity-button"
+              onclick="decreaseQuantity(${index})">
+              −
+            </button>
+            <span class="quantity">
+              ${item.quantity}
+            </span>
+            <button
+              class="quantity-button"
+              onclick="increaseQuantity(${index})">
+              +
+            </button>
+            <button
+              class="delete-button"
+              onclick="removeFromCart(${index})">
+              Delete
+            </button>
+          </div>
         `;
-
         cartItems.appendChild(itemElement);
-
       });
-
-
       cartTotal.textContent = total + " SAR";
     }
-
-
+    function increaseQuantity(index) {
+      cart[index].quantity++;
+      updateCart();
+    }
+    function decreaseQuantity(index) {
+      cart[index].quantity--;
+      if (cart[index].quantity <= 0) {
+        cart.splice(index, 1);
+      }
+      updateCart();
+    }
+    function removeFromCart(index) {
+      cart.splice(index, 1);
+      updateCart();
+    }
     function openProduct(name, price, image, description) {
-
       document.getElementById("panel-name").textContent = name;
-
       document.getElementById("panel-price").textContent =
         price + " SAR";
-
       document.getElementById("panel-image").src = image;
-
       document.getElementById("panel-description").textContent =
         description;
-
-
       document.getElementById("overlay").style.display = "block";
-
       panel.classList.add("active");
-
-
       document.getElementById("add-cart-button").onclick =
         function() {
           addToCart(name, price);
         };
     }
-
-
     function closeProduct() {
-
       document.getElementById("overlay").style.display = "none";
-
       panel.classList.remove("active");
     }
-
-
     let startX = 0;
     let currentX = 0;
     let isDragging = false;
-
-
     panel.addEventListener("touchstart", function(e) {
-
       startX = e.touches[0].clientX;
-
       isDragging = true;
-
     });
-
-
     panel.addEventListener("touchmove", function(e) {
-
       if (!isDragging) return;
-
       currentX = e.touches[0].clientX;
-
     });
-
-
     panel.addEventListener("touchend", function() {
-
       if (!isDragging) return;
-
       const difference = currentX - startX;
-
       if (difference > 80) {
         closeProduct();
       }
-
       isDragging = false;
-
     });
-
   </script>
-
 </body>
 </html>
