@@ -1,11 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>Loi Leen</title>
-  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap"
+    rel="stylesheet"
+  >
+
   <style>
+
     :root {
       --cream: #F5F1E8;
       --cream-light: #FAF7F0;
@@ -15,545 +26,1114 @@
       --text-soft: #687061;
       --border: #DED9CC;
     }
+
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
     }
+
     html {
       scroll-behavior: smooth;
     }
+
     body {
       font-family: "Tajawal", sans-serif;
       background: var(--cream-light);
       color: var(--green-dark);
-      line-height: 1.6;
     }
+
+    /* HEADER */
+
     header {
       position: sticky;
       top: 0;
-      z-index: 100;
-      background: rgba(250, 247, 240, 0.95);
-      backdrop-filter: blur(10px);
+      z-index: 1000;
+
+      background: var(--cream);
       border-bottom: 1px solid var(--border);
+
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 14px 7%;
+
+      padding: 15px 7%;
     }
+
     .logo {
       display: flex;
       align-items: center;
-      text-decoration: none;
     }
+
     .logo img {
-      width: 95px;
+      width: 75px;
       height: auto;
-      display: block;
     }
+
     nav {
       display: flex;
       gap: 25px;
     }
+
     nav a {
-      color: var(--green-dark);
       text-decoration: none;
-      font-size: 15px;
+      color: var(--green-dark);
       font-weight: 500;
     }
+
     nav a:hover {
-      opacity: 0.65;
+      color: var(--text-soft);
     }
+
+    /* HERO */
+
     .hero {
-      min-height: 75vh;
+      min-height: 70vh;
+
       display: flex;
       flex-direction: column;
-      align-items: center;
       justify-content: center;
+      align-items: center;
+
       text-align: center;
-      padding: 60px 20px;
-      background: var(--cream);
+
+      padding: 50px 20px;
     }
+
     .hero h1 {
-      font-size: clamp(42px, 8vw, 76px);
-      font-weight: 600;
+      font-size: 55px;
       margin-bottom: 15px;
-      letter-spacing: -1px;
     }
+
     .hero p {
+      font-size: 20px;
       color: var(--text-soft);
-      font-size: 18px;
-      max-width: 500px;
       margin-bottom: 30px;
     }
+
     .hero-button {
       display: inline-block;
+
       background: var(--green-dark);
       color: white;
+
       text-decoration: none;
+
       padding: 13px 28px;
-      border-radius: 30px;
+      border-radius: 8px;
+
       transition: 0.3s;
     }
+
     .hero-button:hover {
-      transform: translateY(-2px);
-      opacity: 0.9;
+      opacity: 0.85;
     }
-    section {
+
+    /* PRODUCTS */
+
+    .products-section {
       padding: 80px 7%;
     }
+
     .section-title {
       text-align: center;
-      font-size: 32px;
       margin-bottom: 45px;
-      font-weight: 600;
     }
-    .products {
+
+    .section-title h2 {
+      font-size: 35px;
+      margin-bottom: 10px;
+    }
+
+    .section-title p {
+      color: var(--text-soft);
+    }
+
+    .products-grid {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 25px;
+
+      grid-template-columns: repeat(2, 1fr);
+
+      gap: 30px;
     }
+
     .product-card {
       background: white;
+
       border: 1px solid var(--border);
-      border-radius: 18px;
+      border-radius: 12px;
+
       overflow: hidden;
-      cursor: pointer;
+
       transition: 0.3s;
     }
+
     .product-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 12px 30px rgba(40, 51, 38, 0.08);
+      transform: translateY(-4px);
     }
+
     .product-card img {
       width: 100%;
-      aspect-ratio: 1 / 1;
+      height: 280px;
+
       object-fit: cover;
+
       display: block;
     }
+
     .product-info {
-      padding: 18px;
+      padding: 25px;
     }
+
     .product-info h3 {
-      font-size: 18px;
-      margin-bottom: 6px;
+      font-size: 23px;
+      margin-bottom: 10px;
     }
+
     .product-info p {
       color: var(--text-soft);
-      font-size: 15px;
-    }
-    .cart-section {
-      background: var(--green-soft);
-      min-height: 300px;
-    }
-    #cart-items {
-      max-width: 700px;
-      margin: 0 auto 20px;
-    }
-    .cart-item {
-      background: white;
-      border: 1px solid var(--border);
-      padding: 15px 18px;
-      border-radius: 12px;
-      margin-bottom: 10px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 15px;
-      flex-wrap: wrap;
-    }
-    .cart-item-name {
-      font-weight: 500;
-      flex: 1;
-    }
-    .cart-item-price {
-      color: var(--text-soft);
-      min-width: 80px;
-      text-align: center;
-    }
-    .cart-controls {
-      display: flex;
-      align-items: center;
-      gap: 7px;
-    }
-    .cart-controls button {
-      border: 1px solid var(--border);
-      background: var(--cream-light);
-      color: var(--green-dark);
-      min-width: 32px;
-      height: 32px;
-      padding: 0 8px;
-      border-radius: 8px;
-      cursor: pointer;
-      font-family: inherit;
-      font-size: 15px;
-      transition: 0.2s;
-    }
-    .cart-controls button:hover {
-      background: var(--green-light);
-    }
-    .cart-controls .quantity-button {
-      font-size: 20px;
-      line-height: 1;
-    }
-    .quantity {
-      min-width: 25px;
-      text-align: center;
-      font-weight: 600;
-    }
-    .delete-button {
-      background: transparent !important;
-      border-color: transparent !important;
-      color: var(--text-soft) !important;
-      margin-left: 5px;
-    }
-    .delete-button:hover {
-      color: var(--green-dark) !important;
-      background: var(--green-soft) !important;
-    }
-    .empty-cart {
-      text-align: center;
-      color: var(--text-soft);
-    }
-    .cart-total {
-      max-width: 700px;
-      margin: auto;
-      text-align: right;
-      font-size: 20px;
-      font-weight: 600;
-    }
-    footer {
-      text-align: center;
-      padding: 30px;
-      background: var(--green-dark);
-      color: white;
-      font-size: 14px;
-    }
-    #overlay {
-      position: fixed;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.35);
-      z-index: 200;
-      display: none;
-    }
-    #product-panel {
-      position: fixed;
-      top: 0;
-      right: -430px;
-      width: 430px;
-      height: 100vh;
-      background: var(--cream-light);
-      z-index: 300;
-      padding: 30px;
-      box-shadow: -10px 0 30px rgba(0, 0, 0, 0.12);
-      transition: right 0.35s ease;
-      overflow-y: auto;
-    }
-    #product-panel.active {
-      right: 0;
-    }
-    .close-panel {
-      border: none;
-      background: none;
-      font-size: 30px;
-      cursor: pointer;
-      color: var(--green-dark);
-      float: right;
-    }
-    #panel-image {
-      width: 100%;
-      border-radius: 16px;
-      margin-top: 35px;
-      margin-bottom: 20px;
-    }
-    #panel-name {
-      font-size: 28px;
-      margin-bottom: 8px;
-    }
-    #panel-price {
-      font-size: 18px;
-      font-weight: 600;
+      line-height: 1.7;
+
       margin-bottom: 15px;
     }
-    #panel-description {
-      color: var(--text-soft);
-      margin-bottom: 25px;
+
+    .product-price {
+      font-weight: 700;
+      font-size: 18px;
+
+      margin-bottom: 18px;
     }
-    #add-cart-button {
+
+    .view-button {
       width: 100%;
+
       border: none;
+
       background: var(--green-dark);
       color: white;
-      padding: 14px;
-      border-radius: 30px;
+
+      padding: 12px;
+
+      border-radius: 7px;
+
       cursor: pointer;
+
       font-family: inherit;
       font-size: 16px;
     }
-    #add-cart-button:hover {
-      opacity: 0.9;
+
+    .view-button:hover {
+      opacity: 0.85;
     }
-    @media (max-width: 900px) {
-      .products {
-        grid-template-columns: repeat(2, 1fr);
+
+    /* CART */
+
+    .cart-section {
+      padding: 80px 7%;
+
+      background: var(--cream);
+    }
+
+    .cart-section h2 {
+      text-align: center;
+
+      font-size: 35px;
+
+      margin-bottom: 35px;
+    }
+
+    #cart-items {
+      max-width: 900px;
+
+      margin: auto;
+    }
+
+    .empty-cart {
+      text-align: center;
+
+      color: var(--text-soft);
+
+      padding: 30px;
+    }
+
+    .cart-item {
+      background: white;
+
+      border: 1px solid var(--border);
+      border-radius: 10px;
+
+      padding: 20px;
+
+      margin-bottom: 15px;
+
+      display: flex;
+
+      align-items: center;
+
+      gap: 20px;
+
+      flex-wrap: wrap;
+    }
+
+    .cart-item-name {
+      font-weight: 700;
+
+      flex: 1;
+
+      min-width: 150px;
+    }
+
+    .cart-item-price {
+      font-weight: 700;
+
+      min-width: 100px;
+
+      text-align: center;
+    }
+
+    .cart-controls {
+      display: flex;
+
+      align-items: center;
+
+      gap: 8px;
+    }
+
+    .cart-controls button {
+      border: none;
+
+      background: var(--green-light);
+      color: var(--green-dark);
+
+      width: 34px;
+      height: 34px;
+
+      border-radius: 6px;
+
+      cursor: pointer;
+
+      font-family: inherit;
+      font-size: 18px;
+      font-weight: 700;
+    }
+
+    .cart-controls button:hover {
+      background: var(--green-soft);
+    }
+
+    .quantity {
+      min-width: 30px;
+
+      text-align: center;
+
+      font-weight: 700;
+    }
+
+    .cart-controls .delete-button {
+      width: auto;
+
+      padding: 0 12px;
+
+      background: var(--green-dark);
+      color: white;
+
+      font-size: 14px;
+    }
+
+    .cart-total {
+      max-width: 900px;
+
+      margin: 25px auto 0;
+
+      padding-top: 20px;
+
+      border-top: 1px solid var(--border);
+
+      text-align: right;
+
+      font-size: 22px;
+      font-weight: 700;
+    }
+
+    /* PRODUCT PANEL */
+
+    #overlay {
+      display: none;
+
+      position: fixed;
+
+      inset: 0;
+
+      background: rgba(0, 0, 0, 0.35);
+
+      z-index: 1999;
+    }
+
+    #product-panel {
+      position: fixed;
+
+      top: 0;
+      right: -450px;
+
+      width: 430px;
+      height: 100vh;
+
+      background: var(--cream-light);
+
+      z-index: 2000;
+
+      padding: 30px;
+
+      overflow-y: auto;
+
+      transition: right 0.35s ease;
+
+      box-shadow: -5px 0 20px rgba(0, 0, 0, 0.1);
+    }
+
+    #product-panel.active {
+      right: 0;
+    }
+
+    .close-button {
+      border: none;
+
+      background: transparent;
+
+      font-size: 30px;
+
+      cursor: pointer;
+
+      color: var(--green-dark);
+
+      display: block;
+
+      margin-left: auto;
+
+      margin-bottom: 15px;
+    }
+
+    #panel-image {
+      width: 100%;
+
+      height: 300px;
+
+      object-fit: cover;
+
+      border-radius: 10px;
+
+      margin-bottom: 20px;
+    }
+
+    #panel-name {
+      font-size: 28px;
+
+      margin-bottom: 10px;
+    }
+
+    #panel-price {
+      font-size: 20px;
+
+      font-weight: 700;
+
+      margin-bottom: 15px;
+    }
+
+    #panel-description {
+      color: var(--text-soft);
+
+      line-height: 1.8;
+
+      margin-bottom: 25px;
+    }
+
+    #add-to-cart-button {
+      width: 100%;
+
+      border: none;
+
+      background: var(--green-dark);
+      color: white;
+
+      padding: 14px;
+
+      border-radius: 8px;
+
+      cursor: pointer;
+
+      font-family: inherit;
+
+      font-size: 17px;
+    }
+
+    #add-to-cart-button:hover {
+      opacity: 0.85;
+    }
+
+    /* FOOTER */
+
+    footer {
+      background: var(--green-dark);
+
+      color: white;
+
+      text-align: center;
+
+      padding: 25px;
+    }
+
+    /* RESPONSIVE */
+
+    @media screen and (max-width: 900px) {
+
+      .products-grid {
+        grid-template-columns: 1fr 1fr;
       }
+
+      .hero h1 {
+        font-size: 45px;
+      }
+
     }
-    @media (max-width: 600px) {
+
+    @media screen and (max-width: 600px) {
+
       header {
         padding: 12px 5%;
       }
+
       .logo img {
-        width: 75px;
+        width: 60px;
       }
+
       nav {
-        gap: 14px;
+        gap: 12px;
+
+        font-size: 14px;
       }
-      nav a {
-        font-size: 13px;
+
+      .hero {
+        min-height: 60vh;
       }
-      section {
+
+      .hero h1 {
+        font-size: 38px;
+      }
+
+      .hero p {
+        font-size: 17px;
+      }
+
+      .products-section,
+      .cart-section {
         padding: 60px 5%;
       }
-      .products {
+
+      .products-grid {
         grid-template-columns: 1fr;
       }
-      #product-panel {
-        width: 100%;
-        right: -100%;
-      }
-      #product-panel.active {
-        right: 0;
-      }
+
       .cart-item {
         align-items: flex-start;
+
+        flex-direction: column;
       }
-      .cart-item-name {
-        width: 100%;
-        flex: none;
+
+      .cart-item-price {
+        text-align: left;
       }
+
       .cart-controls {
         width: 100%;
       }
-      .cart-item-price {
-        margin-left: auto;
+
+      .cart-total {
+        text-align: left;
       }
+
+      #product-panel {
+        width: 100%;
+
+        right: -100%;
+      }
+
     }
+
   </style>
 </head>
+
+
 <body>
+
+  <!-- HEADER -->
+
   <header>
-    <a href="#" class="logo">
+
+    <a href="#home" class="logo">
       <img src="images/logo.png" alt="Loi Leen">
     </a>
+
     <nav>
       <a href="#home">Home</a>
       <a href="#products">Products</a>
       <a href="#cart">Cart</a>
     </nav>
+
   </header>
-  <main>
-    <section class="hero" id="home">
-      <h1>Organic goodness.</h1>
-      <p>Tea, matcha, honey and coffee.</p>
-      <a href="#products" class="hero-button">Shop Now</a>
-    </section>
-    <section id="products">
-      <h2 class="section-title">Our Products</h2>
-      <div class="products">
-        <div class="product-card"
-          onclick="openProduct(
-            'Matcha',
-            45,
-            'images/matcha.jpg',
-            'Pure matcha with a smooth and refreshing taste.'
-          )">
-          <img src="images/matcha.jpg" alt="Matcha">
-          <div class="product-info">
-            <h3>Matcha</h3>
-            <p>45 SAR</p>
+
+
+  <!-- HERO -->
+
+  <section class="hero" id="home">
+
+    <h1>Organic goodness.</h1>
+
+    <p>
+      Tea, matcha, honey and coffee.
+    </p>
+
+    <a href="#products" class="hero-button">
+      Shop Now
+    </a>
+
+  </section>
+
+
+  <!-- PRODUCTS -->
+
+  <section class="products-section" id="products">
+
+    <div class="section-title">
+
+      <h2>Our Products</h2>
+
+      <p>
+        Simple and natural choices for your daily ritual.
+      </p>
+
+    </div>
+
+
+    <div class="products-grid">
+
+
+      <!-- MATCHA -->
+
+      <div class="product-card">
+
+        <img
+          src="images/matcha.jpg"
+          alt="Matcha"
+        >
+
+        <div class="product-info">
+
+          <h3>Matcha</h3>
+
+          <p>
+            Pure matcha with a smooth and refreshing taste.
+          </p>
+
+          <div class="product-price">
+            45 SAR
           </div>
+
+          <button
+            class="view-button"
+            onclick="openProduct(
+              'Matcha',
+              45,
+              'images/matcha.jpg',
+              'Pure matcha with a smooth and refreshing taste.'
+            )"
+          >
+            View Product
+          </button>
+
         </div>
-        <div class="product-card"
-          onclick="openProduct(
-            'Natural Honey',
-            35,
-            'images/honey.jpg',
-            'Natural honey with a rich and delicate sweetness.'
-          )">
-          <img src="images/honey.jpg" alt="Natural Honey">
-          <div class="product-info">
-            <h3>Natural Honey</h3>
-            <p>35 SAR</p>
-          </div>
-        </div>
-        <div class="product-card"
-          onclick="openProduct(
-            'Green Tea',
-            25,
-            'images/green-tea.jpg',
-            'A refreshing green tea for a simple daily ritual.'
-          )">
-          <img src="images/green-tea.jpg" alt="Green Tea">
-          <div class="product-info">
-            <h3>Green Tea</h3>
-            <p>25 SAR</p>
-          </div>
-        </div>
-        <div class="product-card"
-          onclick="openProduct(
-            'Organic Coffee',
-            40,
-            'images/coffee.jpg',
-            'Organic coffee with a rich and balanced flavor.'
-          )">
-          <img src="images/coffee.jpg" alt="Organic Coffee">
-          <div class="product-info">
-            <h3>Organic Coffee</h3>
-            <p>40 SAR</p>
-          </div>
-        </div>
+
       </div>
-    </section>
-    <section class="cart-section" id="cart">
-      <h2 class="section-title">Your Cart</h2>
-      <div id="cart-items">
-        <p class="empty-cart">Your cart is empty.</p>
+
+
+      <!-- HONEY -->
+
+      <div class="product-card">
+
+        <img
+          src="images/honey.jpg"
+          alt="Natural Honey"
+        >
+
+        <div class="product-info">
+
+          <h3>Natural Honey</h3>
+
+          <p>
+            Natural honey with a rich and delicate sweetness.
+          </p>
+
+          <div class="product-price">
+            35 SAR
+          </div>
+
+          <button
+            class="view-button"
+            onclick="openProduct(
+              'Natural Honey',
+              35,
+              'images/honey.jpg',
+              'Natural honey with a rich and delicate sweetness.'
+            )"
+          >
+            View Product
+          </button>
+
+        </div>
+
       </div>
-      <div class="cart-total">
-        Total: <span id="cart-total">0 SAR</span>
+
+
+      <!-- GREEN TEA -->
+
+      <div class="product-card">
+
+        <img
+          src="images/green-tea.jpg"
+          alt="Green Tea"
+        >
+
+        <div class="product-info">
+
+          <h3>Green Tea</h3>
+
+          <p>
+            A refreshing green tea for a simple daily ritual.
+          </p>
+
+          <div class="product-price">
+            25 SAR
+          </div>
+
+          <button
+            class="view-button"
+            onclick="openProduct(
+              'Green Tea',
+              25,
+              'images/green-tea.jpg',
+              'A refreshing green tea for a simple daily ritual.'
+            )"
+          >
+            View Product
+          </button>
+
+        </div>
+
       </div>
-    </section>
-  </main>
+
+
+      <!-- COFFEE -->
+
+      <div class="product-card">
+
+        <img
+          src="images/coffee.jpg"
+          alt="Organic Coffee"
+        >
+
+        <div class="product-info">
+
+          <h3>Organic Coffee</h3>
+
+          <p>
+            Organic coffee with a rich and balanced flavor.
+          </p>
+
+          <div class="product-price">
+            40 SAR
+          </div>
+
+          <button
+            class="view-button"
+            onclick="openProduct(
+              'Organic Coffee',
+              40,
+              'images/coffee.jpg',
+              'Organic coffee with a rich and balanced flavor.'
+            )"
+          >
+            View Product
+          </button>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- CART -->
+
+  <section class="cart-section" id="cart">
+
+    <h2>Your Cart</h2>
+
+    <div id="cart-items">
+
+      <p class="empty-cart">
+        Your cart is empty.
+      </p>
+
+    </div>
+
+    <div class="cart-total">
+
+      Total:
+      <span id="cart-total">
+        0 SAR
+      </span>
+
+    </div>
+
+  </section>
+
+
+  <!-- FOOTER -->
+
   <footer>
+
     © 2026 Loi Leen
+
   </footer>
-  <div id="overlay" onclick="closeProduct()"></div>
+
+
+  <!-- OVERLAY -->
+
+  <div
+    id="overlay"
+    onclick="closeProduct()"
+  ></div>
+
+
+  <!-- PRODUCT PANEL -->
+
   <div id="product-panel">
-    <button class="close-panel" onclick="closeProduct()">×</button>
-    <img id="panel-image" src="" alt="Product">
+
+    <button
+      class="close-button"
+      onclick="closeProduct()"
+    >
+      ×
+    </button>
+
+    <img
+      id="panel-image"
+      src=""
+      alt=""
+    >
+
     <h2 id="panel-name"></h2>
-    <p id="panel-price"></p>
+
+    <div id="panel-price"></div>
+
     <p id="panel-description"></p>
-    <button id="add-cart-button">Add to Cart</button>
+
+    <button
+      id="add-to-cart-button"
+    >
+      Add to Cart
+    </button>
+
   </div>
+
+
+  <!-- JAVASCRIPT -->
+
   <script>
+
     let cart = [];
-    const panel = document.getElementById("product-panel");
-    function addToCart(name, price) {
-      const existingItem = cart.find(function(item) {
-        return item.name === name;
-      });
-      if (existingItem) {
-        existingItem.quantity++;
-      } else {
-        cart.push({
-          name: name,
-          price: price,
-          quantity: 1
-        });
-      }
-      updateCart();
-      closeProduct();
+
+
+    const panel =
+      document.getElementById("product-panel");
+
+    const overlay =
+      document.getElementById("overlay");
+
+    const panelImage =
+      document.getElementById("panel-image");
+
+    const panelName =
+      document.getElementById("panel-name");
+
+    const panelPrice =
+      document.getElementById("panel-price");
+
+    const panelDescription =
+      document.getElementById("panel-description");
+
+    const addToCartButton =
+      document.getElementById("add-to-cart-button");
+
+
+    /* OPEN PRODUCT */
+
+    function openProduct(
+      name,
+      price,
+      image,
+      description
+    ) {
+
+      panelName.textContent = name;
+
+      panelPrice.textContent =
+        price + " SAR";
+
+      panelDescription.textContent =
+        description;
+
+      panelImage.src = image;
+
+      panelImage.alt = name;
+
+
+      addToCartButton.onclick = function () {
+
+        addToCart(name, price);
+
+      };
+
+
+      panel.classList.add("active");
+
+      overlay.style.display = "block";
+
     }
+
+
+    /* CLOSE PRODUCT */
+
+    function closeProduct() {
+
+      panel.classList.remove("active");
+
+      overlay.style.display = "none";
+
+    }
+
+
+    /* ADD TO CART */
+
+    function addToCart(name, price) {
+
+      const existingProduct =
+        cart.find(item => item.name === name);
+
+
+      if (existingProduct) {
+
+        existingProduct.quantity++;
+
+      } else {
+
+        cart.push({
+
+          name: name,
+
+          price: price,
+
+          quantity: 1
+
+        });
+
+      }
+
+
+      updateCart();
+
+      closeProduct();
+
+    }
+
+
+    /* UPDATE CART */
+
     function updateCart() {
-      const cartItems = document.getElementById("cart-items");
-      const cartTotal = document.getElementById("cart-total");
+
+      const cartItems =
+        document.getElementById("cart-items");
+
+      const cartTotal =
+        document.getElementById("cart-total");
+
+
+      cartItems.innerHTML = "";
+
+
       if (cart.length === 0) {
+
         cartItems.innerHTML =
           '<p class="empty-cart">Your cart is empty.</p>';
-        cartTotal.textContent = "0 SAR";
+
+        cartTotal.textContent =
+          "0 SAR";
+
         return;
+
       }
+
+
       let total = 0;
-      cartItems.innerHTML = "";
-      cart.forEach(function(item, index) {
-        total += item.price * item.quantity;
-        const itemElement = document.createElement("div");
-        itemElement.className = "cart-item";
-        itemElement.innerHTML = `
-          <span class="cart-item-name">
+
+
+      cart.forEach(function (item, index) {
+
+        total +=
+          item.price * item.quantity;
+
+
+        const cartItem =
+          document.createElement("div");
+
+        cartItem.className =
+          "cart-item";
+
+
+        cartItem.innerHTML = `
+
+          <div class="cart-item-name">
             ${item.name}
-          </span>
-          <span class="cart-item-price">
+          </div>
+
+          <div class="cart-item-price">
             ${item.price * item.quantity} SAR
-          </span>
+          </div>
+
           <div class="cart-controls">
+
             <button
-              class="quantity-button"
-              onclick="decreaseQuantity(${index})">
+              onclick="decreaseQuantity(${index})"
+              aria-label="Decrease quantity"
+            >
               −
             </button>
+
             <span class="quantity">
               ${item.quantity}
             </span>
+
             <button
-              class="quantity-button"
-              onclick="increaseQuantity(${index})">
+              onclick="increaseQuantity(${index})"
+              aria-label="Increase quantity"
+            >
               +
             </button>
+
             <button
               class="delete-button"
-              onclick="removeFromCart(${index})">
+              onclick="removeFromCart(${index})"
+            >
               Delete
             </button>
+
           </div>
+
         `;
-        cartItems.appendChild(itemElement);
+
+
+        cartItems.appendChild(cartItem);
+
       });
-      cartTotal.textContent = total + " SAR";
+
+
+      cartTotal.textContent =
+        total + " SAR";
+
     }
+
+
+    /* INCREASE QUANTITY */
+
     function increaseQuantity(index) {
+
       cart[index].quantity++;
+
       updateCart();
+
     }
+
+
+    /* DECREASE QUANTITY */
+
     function decreaseQuantity(index) {
+
       cart[index].quantity--;
+
+
       if (cart[index].quantity <= 0) {
+
         cart.splice(index, 1);
+
       }
+
+
       updateCart();
+
     }
+
+
+    /* DELETE PRODUCT */
+
     function removeFromCart(index) {
+
       cart.splice(index, 1);
+
       updateCart();
+
     }
-    function openProduct(name, price, image, description) {
-      document.getElementById("panel-name").textContent = name;
-      document.getElementById("panel-price").textContent =
-        price + " SAR";
-      document.getElementById("panel-image").src = image;
-      document.getElementById("panel-description").textContent =
-        description;
-      document.getElementById("overlay").style.display = "block";
-      panel.classList.add("active");
-      document.getElementById("add-cart-button").onclick =
-        function() {
-          addToCart(name, price);
-        };
-    }
-    function closeProduct() {
-      document.getElementById("overlay").style.display = "none";
-      panel.classList.remove("active");
-    }
-    let startX = 0;
-    let currentX = 0;
-    let isDragging = false;
-    panel.addEventListener("touchstart", function(e) {
-      startX = e.touches[0].clientX;
-      isDragging = true;
-    });
-    panel.addEventListener("touchmove", function(e) {
-      if (!isDragging) return;
-      currentX = e.touches[0].clientX;
-    });
-    panel.addEventListener("touchend", function() {
-      if (!isDragging) return;
-      const difference = currentX - startX;
-      if (difference > 80) {
-        closeProduct();
+
+
+    /* SWIPE RIGHT TO CLOSE */
+
+    let touchStartX = 0;
+
+
+    panel.addEventListener(
+      "touchstart",
+      function (event) {
+
+        touchStartX =
+          event.touches[0].clientX;
+
       }
-      isDragging = false;
-    });
+    );
+
+
+    panel.addEventListener(
+      "touchend",
+      function (event) {
+
+        const touchEndX =
+          event.changedTouches[0].clientX;
+
+        const difference =
+          touchEndX - touchStartX;
+
+
+        if (difference > 80) {
+
+          closeProduct();
+
+        }
+
+      }
+    );
+
+
   </script>
+
 </body>
+
 </html>
